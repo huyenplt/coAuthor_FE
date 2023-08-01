@@ -4,6 +4,7 @@
       <v-col cols="12" sm="12">
         <BaseCard heading="Authors">
             <TableAuthors></TableAuthors>
+            <v-pagination :length="13"></v-pagination>
         </BaseCard>
       </v-col>
     </v-row>

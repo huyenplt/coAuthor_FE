@@ -73,7 +73,24 @@ export default {
 
   methods: {
     async handleClick() {
-      await axios .post('http://127.0.0.1:8000/api/coauthor/calculateMeasures', { data: this.selectedValues })
+      console.log(this.selectedValues)
+      if (this.selectedValues.includes("Common Neighbor (CN)")) {
+        console.log('CN')
+        await axios.post('http://127.0.0.1:8000/api/coauthor/calculateCN');
+      }
+      if (this.selectedValues.includes("Adamic-Adar (AA)")) {
+        console.log('AA')
+        await axios.post('http://127.0.0.1:8000/api/coauthor/calculateAA');
+      }
+      if (this.selectedValues.includes("Jaccard Coefficient (JC)")) {
+        console.log('JC')
+        await axios.post('http://127.0.0.1:8000/api/coauthor/calculateJC');
+      }
+      if (this.selectedValues.includes("Resource Allocation (RA)")) {
+        console.log('RA')
+        await axios.post('http://127.0.0.1:8000/api/coauthor/calculateRA');
+      }
+      // await axios .post('http://127.0.0.1:8000/api/coauthor/calculateMeasures', { data: this.selectedValues })
       const response2 = await axios.get("http://127.0.0.1:8000/api/coauthor/getCandidates");
         this.authors = response2.data;   
     },

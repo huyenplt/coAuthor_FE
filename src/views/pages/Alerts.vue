@@ -2,7 +2,6 @@
   <v-container fluid class="down-top-padding">
     <v-row>
         <v-col cols="12" sm="12" lg="6">
-            hihi {{ $route.params.id }}
             <BaseCard heading="Alert - Type">
                 <AlertType></AlertType>
             </BaseCard>

@@ -4,14 +4,14 @@
       {{ papers.length }} records
     </v-list-item-subtitle>
     <div class="mt-4">
-      <v-simple-table height="700px">
+      <v-simple-table height="530px">
         <template v-slot:default>
           <thead>
             <tr>
               <th class="text-left">#</th>
-              <th class="text-left">Title</th>
-              <th class="text-left">Pulish year</th>
-              <th class="text-left">View</th>
+              <th class="text-left">Tiêu đề</th>
+              <th class="text-left">Năm xuất bản</th>
+              <th class="text-left"></th>
             </tr>
           </thead>
           <tbody>

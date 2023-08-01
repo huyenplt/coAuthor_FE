@@ -12,11 +12,23 @@
       >
     </div>
     <div v-else>
+      <div v-show="showAlert">
+        <v-alert type="success">Import co-author table sucessfully! <a @click="handleChaneRoute">Go to create Candidate table</a>
+        </v-alert>
+      </div>
+      <div class="d-flex justify-end mr-5">
+        <v-btn
+          @click="handleClickImport"
+          class="text-capitalize element-0"
+          color="success"
+          >EXPORT CO-AUTHORS TABLE</v-btn
+        >
+      </div>
       <v-list-item-subtitle class="text-wrap">
         {{ authors.length }} records
       </v-list-item-subtitle>
       <div class="mt-4">
-        <v-simple-table height="700px">
+        <v-simple-table fixed-header height="700px">
           <template v-slot:default>
             <thead>
               <tr>
@@ -62,19 +74,27 @@ export default {
 
   data: () => ({
     authors: [],
+    showAlert: false
   }),
 
   methods: {
     handleClick() {
       axios
-      .get("http://127.0.0.1:8000/api/coauthor/import")
-      .then((response) => {
-        this.authors = response.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        .get("http://127.0.0.1:8000/api/coauthor/import")
+        .then((response) => {
+          this.authors = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
+
+    handleClickImport() {
+      this.showAlert = !this.showAlert
+    },
+    handleChaneRoute() {
+      this.$router.push('/co-author/candidate');
+    }
   },
 };
 </script>

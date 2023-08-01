@@ -47,47 +47,53 @@ export default {
   data: () => ({
     items: [
       {
-        title: "Import data",
-        icon: "mdi-import",
-        to: "/dashboard/basic-dashboard"
-      },
-
-      {
-        title: "Create candidate table",
-        icon: "mdi-table-column-width",
-        to: "/co-author"
-      },
-
-      {
-        title: "Create co-author",
-        to: "/co-author/create"
-      },
-
-      {
-        title: "Create candidate",
-        to: "/co-author/candidate"
-      },
-
-      {
-        title: "Labeled",
-        to: "/co-author/labeled"
-      },
-      {
-        title: "Measures",
-        to: "/co-author/measure"
-      },
-
-      {
-        title: "Author",
+        title: "Tác giả",
         icon: "mdi-account-circle",
         to: "/authors"
       },
-
       {
-        title: "Paper",
+        title: "Thêm mới tác giả",
+        to: "/authors/add"
+      },
+      {
+        title: "Danh sách tác gỉa",
+        to: "/authors"
+      },
+      {
+        title: "Bài báo",
         icon: "mdi-file-document-edit-outline",
         to: "/papers"
-      }
+      },
+      {
+        title: "Thêm mới bài báo",
+        to: "/papers/add"
+      },
+      {
+        title: "Danh sách bài báo",
+        to: "/papers"
+      },
+      {
+        title: "Gợi ý cộng tác",
+        icon: "mdi-table-column-width",
+        to: "/co-author"
+      },
+      {
+        title: "Tạo bảng đồng tác giả",
+        to: "/co-author/create"
+      },
+      {
+        title: "Tạo bảng ứng viên",
+        to: "/co-author/candidate"
+      },
+      {
+        title: "Áp dụng sSMC_FCM",
+        to: "/co-author/sSMC_FCM"
+      },
+      {
+        title: "Xem gợi ý cộng tác",
+        icon: "mdi-account-search",
+        to: "/predict"
+      },
     ]
   }),
   computed: {

@@ -19,6 +19,11 @@ export default new Router({
                     component: () => import('@/views/pages/PaperDetail'),
                 },
                 {
+                    name: 'AuthorAdd',
+                    path: '/authors/add',
+                    component: () => import('@/views/pages/AuthorAdd'),
+                },
+                {
                     name: 'AuthorDetail',
                     path: '/author/:id',
                     component: () => import('@/views/pages/AuthorDetail'),
@@ -70,6 +75,16 @@ export default new Router({
                     name: 'Measure',
                     path: 'co-author/measure',
                     component: () => import('@/views/pages/Measure'),
+                },
+                {
+                    name: 'sSMC_FCM',
+                    path: 'co-author/sSMC_FCM',
+                    component: () => import('@/views/pages/sSMC_FCM'),
+                },
+                {
+                    name: 'Predict',
+                    path: 'predict',
+                    component: () => import('@/views/pages/Predict'),
                 },
             ]
         },

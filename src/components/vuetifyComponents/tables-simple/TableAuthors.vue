@@ -7,7 +7,7 @@
       {{ authors.length }} records
     </v-list-item-subtitle>
     <div class="mt-4">
-      <v-simple-table height="700px">
+      <v-simple-table height="530px">
         <template v-slot:default>
           <thead>
             <tr>
