@@ -2,7 +2,7 @@
   <v-container fluid class="down-top-padding">
     <v-row>
       <v-col cols="12" sm="12">
-        <BaseCard heading="Co-Authors">
+        <BaseCard heading="Bảng đồng tác gỉa">
             <TableCoAuthor></TableCoAuthor>
         </BaseCard>
       </v-col>

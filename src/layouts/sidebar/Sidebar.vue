@@ -46,29 +46,31 @@ export default {
   },
   data: () => ({
     items: [
+      // {
+      //   title: "Tác giả",
+      //   icon: "mdi-account-circle",
+      //   to: "/authors"
+      // },
+      // {
+      //   title: "Thêm mới tác giả",
+      //   to: "/authors/add"
+      // },
       {
-        title: "Tác giả",
+        title: "Danh sách tác giả",
         icon: "mdi-account-circle",
         to: "/authors"
       },
+      // {
+      //   title: "Bài báo",
+      //   icon: "mdi-file-document-edit-outline",
+      //   to: "/papers"
+      // },
+      // {
+      //   title: "Thêm mới bài báo",
+      //   to: "/papers/add"
+      // },
       {
-        title: "Thêm mới tác giả",
-        to: "/authors/add"
-      },
-      {
-        title: "Danh sách tác gỉa",
-        to: "/authors"
-      },
-      {
-        title: "Bài báo",
         icon: "mdi-file-document-edit-outline",
-        to: "/papers"
-      },
-      {
-        title: "Thêm mới bài báo",
-        to: "/papers/add"
-      },
-      {
         title: "Danh sách bài báo",
         to: "/papers"
       },

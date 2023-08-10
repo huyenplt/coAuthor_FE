@@ -2,9 +2,8 @@
   <v-container fluid class="down-top-padding">
     <v-row>
       <v-col cols="12" sm="12">
-        <BaseCard heading="Authors">
+        <BaseCard heading="Danh sách tác giả">
             <TableAuthors></TableAuthors>
-            <v-pagination :length="13"></v-pagination>
         </BaseCard>
       </v-col>
     </v-row>

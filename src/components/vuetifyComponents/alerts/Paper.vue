@@ -1,7 +1,4 @@
 <template>
-  <!-- ----------------------------------------------------------------------------- -->
-  <!-- Text -->
-  <!-- ----------------------------------------------------------------------------- -->
   <div>
     <v-list-item-subtitle class="text-wrap d-flex">
       <div><v-icon>mdi-calendar-blank-multiple</v-icon> Publish year: {{ paper.year }}</div>

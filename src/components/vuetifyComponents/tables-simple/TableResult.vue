@@ -1,6 +1,10 @@
 <template>
   <div>
-    <div v-if="authors.length === 0" class="d-flex justify-center flex-column">
+    <div
+      v-if="authors.length === 0"
+      class="d-flex flex-column"
+      style="height:530px; padding-top: 80px"
+    >
       <div class="" style="width: 70%">
         <h6
           class="subtitle-2 blue-grey--text text--darken-2 font-weight-regular"
@@ -14,33 +18,32 @@
             filled
             background-color="transparent"
             disabled
-            value=2
+            value="2"
           ></v-text-field>
-          <v-autocomplete
+          <v-text-field
             class="mr-5"
-            ref="country"
-            v-model="m_param"
-            :rules="[() => !!authorSearch || 'This field is required']"
             label="Hệ số mờ hoá M"
-            placeholder=""
-            required
-          ></v-autocomplete>
-          <v-autocomplete
-            ref="country"
-            v-model="m_phay_param"
-            :rules="[() => !!authorSearch || 'This field is required']"
+            filled
+            background-color="transparent"
+            v-model="m_param"
+          ></v-text-field>
+          <v-text-field
+            class="mr-5"
             label="Hệ số mờ hoá M'"
-            placeholder=""
-            required
-          ></v-autocomplete>
+            filled
+            background-color="transparent"
+            v-model="m_phay_param"
+          ></v-text-field>
         </div>
       </div>
-      <v-btn
-        @click="handleClick"
-        class="text-capitalize element-0"
-        color="success"
-        >Run sSMC_FCM</v-btn
-      >
+      <div class="pt-5">
+        <v-btn
+          @click="handleClick"
+          class="text-capitalize element-0"
+          color="success"
+          >Run sSMC_FCM</v-btn
+        >
+      </div>
     </div>
     <div v-else>
       <div v-show="showAlert">
@@ -64,17 +67,17 @@
             </div>
           </div>
         </div>
-        <div class="d-flex justify-end mr-5">
+        <!-- <div class="d-flex justify-end mr-5">
           <v-btn
             @click="handleClickImport"
             class="text-capitalize element-0"
             color="success"
             >EXPORT</v-btn
           >
-        </div>
+        </div> -->
       </v-list-item-subtitle>
       <div class="mt-4">
-        <v-simple-table height="700px">
+        <v-simple-table height="530px">
           <template v-slot:default>
             <thead>
               <tr>
@@ -117,11 +120,10 @@ export default {
     authors: [],
     showAlert: false,
     m_param: null,
-    m_phay_param: null
+    m_phay_param: null,
   }),
 
-  computed: {
-  },
+  computed: {},
 
   methods: {
     handleClickImport() {
@@ -136,14 +138,11 @@ export default {
       //   }
       // }
 
-      await axios.get(
-        `http://127.0.0.1:8000/api/coauthor/test`
-      );
+      await axios.get(`http://127.0.0.1:8000/api/coauthor/test`);
 
       // await axios.post(
       //   `http://127.0.0.1:8000/api/coauthor/test`, requestBody
       // );
-
 
       const response2 = await axios.get(
         "http://127.0.0.1:8000/api/coauthor/getCandidates"

@@ -1,65 +1,62 @@
 <template>
-  <!-- ----------------------------------------------------------------------------- -->
-  <!-- TableSimpleFixHeight -->
-  <!-- ----------------------------------------------------------------------------- -->
   <div>
     <div v-if="authors.length === 0" class="d-flex justify-center flex-column">
       <div class="" style="width: 30%">
+        <h6
+          class="subtitle-2 blue-grey--text text--darken-2 font-weight-regular"
+        >
+          Chọn khoảng thời gian T1
+        </h6>
         <div class="d-flex">
-          <v-text-field
-            :rules="[() => !!authorSearch || 'This field is required']"
+          <v-autocomplete
             required
-            class="mr-2"
+            class="mr-4"
             v-model="T1BeginSelected"
             :items="optionsBeginT1"
-            filled
-            label="Year begin"
+            label="Năm bắt đầu"
             background-color="transparent"
-          ></v-text-field>
-          <v-text-field
-          :rules="[() => !!authorSearch || 'This field is required']"
+            filled
+          ></v-autocomplete>
+          <v-autocomplete
             required
             v-model="T1EndSelected"
             :items="optionsEndT1"
             filled
-            label="Year end"
+            label="Năm kết thúc"
             background-color="transparent"
-          ></v-text-field>
+          ></v-autocomplete>
         </div>
         <h6
-          class="subtitle-2 blue-grey--text text--darken-2 font-weight-regular"
+          class="subtitle-2 blue-grey--text text--darken-2 font-weight-regular mt-5"
         >
-          Select T2
+          Chọn khoảng thời gian T2
         </h6>
         <div class="d-flex">
-          <v-text-field
-          :rules="[() => !!authorSearch || 'This field is required']"
+          <v-autocomplete
             required
-            class="mr-2"
+            class="mr-4"
             v-model="T2BeginSelected"
             :items="optionsBeginT2"
             filled
-            label="Year begin"
+            label="Năm bắt đầu"
             background-color="transparent"
-          ></v-text-field>
-          <v-text-field
-          :rules="[() => !!authorSearch || 'This field is required']"
+          ></v-autocomplete>
+          <v-autocomplete
             required
             v-model="T2EndSelected"
             :items="optionsEndT2"
             filled
-            label="Year end"
+            label="Năm kết thúc"
             background-color="transparent"
-          ></v-text-field>
+          ></v-autocomplete>
         </div>
         <h6
-          class="subtitle-2 blue-grey--text text--darken-2 font-weight-regular"
+          class="subtitle-2 blue-grey--text text--darken-2 font-weight-regular mt-5"
         >
-          Select Measure
+          Chọn các độ đo
         </h6>
         <div class="d-flex">
-          <v-text-field
-          :rules="[() => !!authorSearch || 'This field is required']"
+          <v-autocomplete
             required
             v-model="selectedValues"
             :items="options"
@@ -67,14 +64,14 @@
             label="Measures"
             background-color="transparent"
             multiple
-          ></v-text-field>
+          ></v-autocomplete>
         </div>
       </div>
       <v-btn
         @click="handleClick"
         class="text-capitalize element-0"
         color="success"
-        >CREATE CANDIDATE TABLE</v-btn
+        >TẠO BẢNG ỨNG VIÊN ĐỒNG TÁC GIẢ</v-btn
       >
     </div>
     <div v-else>
@@ -99,17 +96,17 @@
             </div>
           </div>
         </div>
-        <div class="d-flex justify-end mr-5">
+        <!-- <div class="d-flex justify-end mr-5">
           <v-btn
             @click="handleClickImport"
             class="text-capitalize element-0"
             color="success"
             >EXPORT CANDIDATES TABLE</v-btn
           >
-        </div>
+        </div> -->
       </v-list-item-subtitle>
       <div class="mt-4">
-        <v-simple-table height="700px">
+        <v-simple-table height="530px">
           <template v-slot:default>
             <thead>
               <tr>

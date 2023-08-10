@@ -2,9 +2,9 @@
   <v-container fluid class="down-top-padding">
     <v-row>
       <v-col cols="12" sm="12">
-        <BaseCard heading="Thông tin gợi ý">
-          <div class="d-flex justify-center flex-column">
-            <div class="" style="width: 70%">
+        <BaseCard heading="Thông tin gợi ý" style="height: 530px">
+          <div class="d-flex flex-column">
+            <div class="" style="width: 70%; padding-top:80px">
               <div class="d-flex">
                 <v-autocomplete
                   ref="country"
@@ -20,7 +20,7 @@
             <div class="mt-2">
             <v-btn
               @click="handleSearch"
-              class="text-capitalize element-0"
+              class="text-capitalize element-0 mt-5"
               color="success"
               >Search</v-btn
             >
@@ -54,7 +54,7 @@
                 </tbody>
               </template>
             </v-simple-table>
-            <span v-else>{{textResult}}</span>
+            <span style="color:red" v-else>{{textResult}}</span>
           </div>
         </BaseCard>
       </v-col>
