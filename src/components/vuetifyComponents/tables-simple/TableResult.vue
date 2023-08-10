@@ -26,6 +26,7 @@
             filled
             background-color="transparent"
             v-model="m_param"
+            :disabled="isLoading1"
           ></v-text-field>
           <v-text-field
             class="mr-5"
@@ -33,14 +34,26 @@
             filled
             background-color="transparent"
             v-model="m_phay_param"
+            :disabled="isLoading1"
           ></v-text-field>
         </div>
+      </div>
+      <div
+        v-if="isLoading1"
+        class="loading d-flex justify-content-center"
+        style="justify-content: center; padding: 50px"
+      >
+        <v-progress-circular
+          indeterminate
+          color="primary"
+        ></v-progress-circular>
       </div>
       <div class="pt-5">
         <v-btn
           @click="handleClick"
           class="text-capitalize element-0"
           color="success"
+          :disabled="isLoading1"
           >Run sSMC_FCM</v-btn
         >
       </div>
@@ -117,6 +130,7 @@ export default {
   name: "TableCoAuthor",
 
   data: () => ({
+    isLoading1: false,
     authors: [],
     showAlert: false,
     m_param: null,
@@ -130,6 +144,7 @@ export default {
       this.showAlert = !this.showAlert;
     },
     async handleClick() {
+      this.isLoading1 = true;
       // let requestBody;
       // if (this.m_param !== null && this.m_phay_param !== null) {
       //   requestBody = {
@@ -147,6 +162,8 @@ export default {
       const response2 = await axios.get(
         "http://127.0.0.1:8000/api/coauthor/getCandidates"
       );
+      this.isLoading1 = false;
+
       this.authors = response2.data;
     },
   },

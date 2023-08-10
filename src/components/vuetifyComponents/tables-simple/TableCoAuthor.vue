@@ -8,13 +8,30 @@
       <v-progress-circular indeterminate color="primary"></v-progress-circular>
     </div>
     <div v-else>
-      <div v-if="authors.length === 0" class="d-flex justify-center">
-        <v-btn
-          @click="handleClick"
-          class="text-capitalize element-0"
-          color="success"
-          >TẠO BẢNG ĐỒNG TÁC GIẢ</v-btn
+      <div
+        v-if="authors.length === 0"
+        class="d-flex justify-center flex-column"
+      >
+        <div style="color:red">Chưa có dữ liệu bảng đồng tác giả</div>
+        <div
+          v-if="isLoading1"
+          class="loading d-flex justify-content-center"
+          style="justify-content: center; padding: 50px"
         >
+          <v-progress-circular
+            indeterminate
+            color="primary"
+          ></v-progress-circular>
+        </div>
+        <div class="d-flex justify-center mt-5">
+          <v-btn
+            @click="handleClick"
+            class="text-capitalize element-0"
+            color="success"
+            :disabled="isLoading1"
+            >TẠO BẢNG ĐỒNG TÁC GIẢ</v-btn
+          >
+        </div>
       </div>
       <div v-else>
         <!-- <div class="d-flex justify-end mr-5">
@@ -79,18 +96,22 @@ export default {
   data: () => ({
     authors: [],
     showAlert: false,
-    isLoading: true
+    isLoading: true,
+    isLoading1: false,
   }),
 
   methods: {
     handleClick() {
+      this.isLoading1 = true;
       axios
         .get("http://127.0.0.1:8000/api/coauthor/import")
         .then((response) => {
           this.authors = response.data;
+          this.isLoading1 = false;
         })
         .catch((error) => {
           console.log(error);
+          this.isLoading1 = false;
         });
     },
 

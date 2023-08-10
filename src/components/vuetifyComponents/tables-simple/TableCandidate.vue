@@ -16,6 +16,8 @@
             label="Năm bắt đầu"
             background-color="transparent"
             filled
+        :disabled="isLoading1"
+
           ></v-autocomplete>
           <v-autocomplete
             required
@@ -24,6 +26,8 @@
             filled
             label="Năm kết thúc"
             background-color="transparent"
+        :disabled="isLoading1"
+
           ></v-autocomplete>
         </div>
         <h6
@@ -40,6 +44,8 @@
             filled
             label="Năm bắt đầu"
             background-color="transparent"
+        :disabled="isLoading1"
+
           ></v-autocomplete>
           <v-autocomplete
             required
@@ -48,6 +54,8 @@
             filled
             label="Năm kết thúc"
             background-color="transparent"
+        :disabled="isLoading1"
+
           ></v-autocomplete>
         </div>
         <h6
@@ -64,13 +72,23 @@
             label="Measures"
             background-color="transparent"
             multiple
+        :disabled="isLoading1"
+
           ></v-autocomplete>
         </div>
       </div>
+      <div
+      v-if="isLoading1"
+      class="loading d-flex justify-content-center"
+      style="justify-content: center; padding: 50px"
+    >
+      <v-progress-circular indeterminate color="primary"></v-progress-circular>
+    </div>
       <v-btn
         @click="handleClick"
         class="text-capitalize element-0"
         color="success"
+        :disabled="isLoading1"
         >TẠO BẢNG ỨNG VIÊN ĐỒNG TÁC GIẢ</v-btn
       >
     </div>
@@ -157,6 +175,7 @@ export default {
   },
 
   data: () => ({
+    isLoading1: false,
     authors: [],
     split_year: "",
     T1BeginSelected: "",
@@ -195,7 +214,7 @@ export default {
       2015,
       2016,
     ],
-    selectedValues: [],
+    // selectedValues: [],
     options: [
       "Common Neighbor (CN)",
       "Adamic-Adar (AA)",
@@ -221,6 +240,9 @@ export default {
       if (this.T2BeginSelected == "") return null;
       else return this.yearBase.filter((year) => year > this.T2BeginSelected);
     },
+    selectedValues: function() {
+      return this.options.slice();
+    }
   },
 
   methods: {
@@ -228,8 +250,9 @@ export default {
       this.showAlert = !this.showAlert;
     },
     async handleClick() {
+      this.isLoading1 = true;
       await axios.get(
-        `http://127.0.0.1:8000/api/coauthor/importCandidate/2000`
+        `http://127.0.0.1:8000/api/coauthor/importCandidate/${this.T1EndSelected}`
       );
 
       if (this.selectedValues.includes("Common Neighbor (CN)")) {
@@ -252,6 +275,8 @@ export default {
       const response2 = await axios.get(
         "http://127.0.0.1:8000/api/coauthor/getCandidates"
       );
+      this.isLoading1 = false
+
       this.authors = response2.data;
     },
   },

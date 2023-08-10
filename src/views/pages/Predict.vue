@@ -2,7 +2,7 @@
   <v-container fluid class="down-top-padding">
     <v-row>
       <v-col cols="12" sm="12">
-        <BaseCard heading="Thông tin gợi ý" style="height: 530px">
+        <BaseCard heading="Thông tin gợi ý" style="height: 600px">
           <div class="d-flex flex-column">
             <div class="" style="width: 70%; padding-top:80px">
               <div class="d-flex">
@@ -25,9 +25,8 @@
               >Search</v-btn
             >
             </div>
-          </div>
-          <div class="mt-4">
-            <v-simple-table v-if="coauthors.length" height="700px">
+            <div class="mt-4">
+            <v-simple-table v-if="coauthors.length" height="200px">
               <template v-slot:default>
                 <thead>
                   <tr>
@@ -56,6 +55,8 @@
             </v-simple-table>
             <span style="color:red" v-else>{{textResult}}</span>
           </div>
+          </div>
+          
         </BaseCard>
       </v-col>
     </v-row>
@@ -89,6 +90,7 @@ export default {
 
   methods: {
     async handleSearch() {
+      this.coauthors = [];
       const id = this.authors.find((item) => item.name == this.authorSearch).id;
       const predictResults = await axios.get(
         `http://127.0.0.1:8000/api/coauthor/predict/${id}`
